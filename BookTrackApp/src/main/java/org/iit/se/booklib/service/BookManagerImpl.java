@@ -6,13 +6,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.iit.se.booklib.dao.BookDao;
 import org.iit.se.booklib.model.Book;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BookManagerImpl implements BookManager {
 
-	private List<Book> books = new ArrayList<Book>();
+	@Autowired
+	BookDao bookDao;
+	
 	private Map<String, List<Book>> userToBookMapping = new HashMap<String, List<Book>>();
 
 	public List<Book> getBookByUserId(String userId) {
@@ -24,25 +28,18 @@ public class BookManagerImpl implements BookManager {
 	}
 
 	public List<Book> getAllBooks() {
-		return this.books;
+		return bookDao.getBooks();
 	}
 
 	public List<Book> getBookByName(String bookName) {
-		List<Book> bookList = new ArrayList<Book>();
-		if (StringUtils.isNotEmpty(bookName)) {
-			for (Book preBook : books) {
-				if (preBook.getBookName().equals(bookName)) {
-					bookList.add(preBook);
-				}
-			}
-		}
+		List<Book> bookList = bookDao.getBookByName(bookName);
 		return bookList;
 	}
 
 	public void addBook(Book book) {
 		if (book != null) {
 			if (StringUtils.isNotEmpty(book.getBookName())) {
-				books.add(book);
+				bookDao.addBook(book);
 			} else {
 				System.out.println("Unable to add book");
 			}

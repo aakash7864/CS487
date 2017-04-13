@@ -4,17 +4,17 @@ import java.math.BigDecimal;
 
 public class Book {
 
-	private Long bookNumber;
+	private String bookNumber;
 	private String bookName;
 	private String bookAuthor;
 	private BigDecimal bookPrice;
 	private String bookPublication;
 
-	public Long getBookNumber() {
+	public String getBookNumber() {
 		return bookNumber;
 	}
 
-	public void setBookNumber(Long bookNumber) {
+	public void setBookNumber(String bookNumber) {
 		this.bookNumber = bookNumber;
 	}
 

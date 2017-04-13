@@ -1,25 +1,28 @@
 package org.iit.se.booklib.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.iit.se.booklib.dao.UserDao;
 import org.iit.se.booklib.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserManagerImpl implements UserManager {
 
-	List<User> users = new ArrayList<User>();
+	@Autowired
+	UserDao userDao;
 
-	public boolean isExist(User searchUser) {
+	public boolean isExist(String userId,String password, String role) {
 		boolean isExist = false;
-		if (StringUtils.isNotEmpty(searchUser.getUserId()) && StringUtils.isNotEmpty(searchUser.getPassowrd())
-				&& StringUtils.isNotEmpty(searchUser.getRole())) {
+		if (StringUtils.isNotEmpty(userId) && StringUtils.isNotEmpty(password)
+				&& StringUtils.isNotEmpty(role)) {
+			List<User> users = userDao.getUsers();
 			for (User user : users) {
-				if (user.getUserId().equals(searchUser.getUserId())
-						&& user.getPassowrd().equals(searchUser.getPassowrd())
-						&& user.getRole().equals(searchUser.getRole())) {
+				if (user.getUserId().equals(userId)
+						&& user.getPassowrd().equals(password)
+						&& user.getRole().equals(role)) {
 					isExist = true;
 				}
 			}
@@ -28,22 +31,15 @@ public class UserManagerImpl implements UserManager {
 	}
 
 	public User getUserByName(String userName) {
-		User user = null;
-		if (StringUtils.isNotEmpty(userName)) {
-			for (User currUser : users) {
-				if (currUser.getUserId().equals(userName)) {
-					user = currUser;
-				}
-			}
-		}
-		return user;
+		List<User> users = userDao.getUserById(userName);
+		return users.get(0);
 	}
 
 	public void addUser(User user) {
 		if (user != null) {
 			if (StringUtils.isNotEmpty(user.getUserId()) && StringUtils.isNotEmpty(user.getPassowrd())
 					&& StringUtils.isNotEmpty(user.getRole())) {
-				users.add(user);
+				userDao.addUser(user);
 			} else {
 				System.out.println("unable to add user");
 			}
@@ -53,8 +49,8 @@ public class UserManagerImpl implements UserManager {
 
 	}
 
-	public List<User> getUsers() {	
-		return users;
+	public List<User> getUsers() {
+		return userDao.getUsers();
 	}
 
 }

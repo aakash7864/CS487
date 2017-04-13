@@ -6,7 +6,7 @@ import org.iit.se.booklib.model.User;
 
 public interface UserManager {
 
-	boolean isExist(User user);
+	boolean isExist(String userId,String password, String role);
 
 	User getUserByName(String userName);
 	
