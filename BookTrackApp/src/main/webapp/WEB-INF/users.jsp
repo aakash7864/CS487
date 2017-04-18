@@ -11,7 +11,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="../assets/css/main.css" />
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
 <body class="homepage">
@@ -38,23 +38,26 @@
 			<section id="features" class="container">
 				<header>
 					<h2>
-						Welcome <strong><c:out value="${user.userId}" /></strong>!
 					</h2>
 				</header>
 				<div>
 				<table class="table">
 				<tr>
 				<th>
-				<form action="/admin/searchBook" method="post">
-				 <input name="bookName" type="text" class="form-control" placeholder="Book Name..."
+				<form action="/admin/searchUser" method="post">
+				 <input name="bookName" type="text" class="form-control" placeholder="User Name..."
                    autofocus="true"/>
 					<button class="btn btn-lg btn-block" type="submit">Search</button>
 				</form>
 				</th>
 				<th>
-				<form action="/admin/addBook" method="get">
+				<form action="/admin/addStudent" method="get">
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Add
-						Book</button>
+						Student </button>
+				</form>
+				<form action="/admin/addTeacher" method="get">
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Add
+						Teacher </button>
 				</form>
 				</th>
 				</tr>
@@ -62,32 +65,37 @@
 				</div>
 				<table class="table">
 					<tr>
-						<th>Book ID</th>
-						<th>Book Name</th>
-						<th>Author</th>
-						<th>Book Price</th>
-						<th></th>
+						<th>User ID</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Role</th>
+						<th>Phone No</th>
+						<th>Password</th>
+						<th>Address</th>
 						<th></th>
 					</tr>
-					<c:forEach var="book" items="${books}">
+					<c:forEach var="user" items="${users}">
 						<tr>
-							<td>${book.bookNumber}</td>
-							<td>${book.bookName}</td>
-							<td>${book.bookAuthor}</td>
-							<td>${book.bookPrice}</td>
+							<td>${user.userId}</td>
+							<td>${user.firstName} , ${user.lastName}</td>
+							<td>${user.email}</td>
+							<td>${user.role}</td>
+							<td>${user.phoneNo}</td>
+							<td>${user.passowrd}</td>
+							<td>${user.address}, ${user.city} , ${user.country}</td>
 							<td>
-								<form method="get" action="/admin/updateBook"
+								<form method="get" action="/admin/updateUser"
 									class="form-signin">
 									<input name=bookNumber type="hidden" placeholder="bookNumber"
-										value="${book.bookNumber}" />
+										value="${user.userId}" />
 									<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
 								</form>
 							</td>
 							<td>
-								<form method="POST" action="/admin/deleteBook"
+								<form method="POST" action="/admin/deleteUser"
 									class="form-signin">
 									<input name=bookNumber type="hidden" placeholder="bookNumber"
-										value="${book.bookNumber}" />
+										value="${user.userId}" />
 									<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
 								</form>
 							</td>
@@ -99,13 +107,13 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/skel-viewport.min.js"></script>
-	<script src="assets/js/util.js"></script>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/jquery.dropotron.min.js"></script>
+	<script src="../assets/js/skel.min.js"></script>
+	<script src="../assets/js/skel-viewport.min.js"></script>
+	<script src="../assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="assets/js/main.js"></script>
+	<script src="../assets/js/main.js"></script>
 
 </body>
 

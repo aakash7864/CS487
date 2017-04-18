@@ -11,7 +11,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="../assets/css/main.css" />
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
 <body class="homepage">
@@ -22,11 +22,11 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li><a class="icon fa-home" href="/admin/account"><span>My
+					<li><a class="icon fa-home" href="/admin"><span>My
 								Account</span></a></li>
-					<li><a href="/admin" class="icon fa-cog"><span>Manage
+					<li><a href="#" class="icon fa-cog"><span>Manage
 								Book</span></a></li>
-					<li><a class="icon fa-cog" href="/admin/users"><span>Manage
+					<li><a class="icon fa-cog" href="#"><span>Manage
 								User</span></a></li>
 					<li><a class="icon fa-retweet" href="/logout"><span>Logout</span></a></li>
 				</ul>
@@ -36,11 +36,6 @@
 		<div>
 
 			<section id="features" class="container">
-				<header>
-					<h2>
-						Welcome <strong><c:out value="${user.userId}" /></strong>!
-					</h2>
-				</header>
 				<div>
 				<table class="table">
 				<tr>
@@ -76,7 +71,7 @@
 							<td>${book.bookAuthor}</td>
 							<td>${book.bookPrice}</td>
 							<td>
-								<form method="get" action="/admin/updateBook"
+								<form method="POST" action="/admin/book/update"
 									class="form-signin">
 									<input name=bookNumber type="hidden" placeholder="bookNumber"
 										value="${book.bookNumber}" />
@@ -84,7 +79,7 @@
 								</form>
 							</td>
 							<td>
-								<form method="POST" action="/admin/deleteBook"
+								<form method="POST" action="/admin/book/delete"
 									class="form-signin">
 									<input name=bookNumber type="hidden" placeholder="bookNumber"
 										value="${book.bookNumber}" />
@@ -99,13 +94,13 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/skel-viewport.min.js"></script>
-	<script src="assets/js/util.js"></script>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/jquery.dropotron.min.js"></script>
+	<script src="../assets/js/skel.min.js"></script>
+	<script src="../assets/js/skel-viewport.min.js"></script>
+	<script src="../assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="assets/js/main.js"></script>
+	<script src="../assets/js/main.js"></script>
 
 </body>
 

@@ -9,6 +9,9 @@ public class Book {
 	private String bookAuthor;
 	private BigDecimal bookPrice;
 	private String bookPublication;
+	private int avilableQuanity;
+	private int allocatedQuantity;
+	private String courseNumber;
 
 	public String getBookNumber() {
 		return bookNumber;
@@ -48,6 +51,30 @@ public class Book {
 
 	public void setBookPublication(String bookPublication) {
 		this.bookPublication = bookPublication;
+	}
+
+	public int getAvilableQuanity() {
+		return avilableQuanity;
+	}
+
+	public void setAvilableQuanity(int avilableQuanity) {
+		this.avilableQuanity = avilableQuanity;
+	}
+
+	public int getAllocatedQuantity() {
+		return allocatedQuantity;
+	}
+
+	public void setAllocatedQuantity(int allocatedQuantity) {
+		this.allocatedQuantity = allocatedQuantity;
+	}
+
+	public String getCourseNumber() {
+		return courseNumber;
+	}
+
+	public void setCourseNumber(String courseNumber) {
+		this.courseNumber = courseNumber;
 	}
 
 }

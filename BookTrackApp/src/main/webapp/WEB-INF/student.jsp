@@ -1,78 +1,127 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Strongly Typed by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-	</head>
-	<body class="homepage">
-		<div id="page-wrapper">
+<head>
+<title>Strongly Typed by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+<link rel="stylesheet" href="assets/css/main.css" />
+<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+<body class="homepage">
+	<div id="page-wrapper">
 
-			
-<div id="features-wrapper">
 
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li><a class="icon fa-home" href="/admin"><span>My Account</span></a></li>
-									<li>
-										<a href="#" class="icon fa-cog"><span>Manage Book</span></a>
-									</li>
-									<li><a class="icon fa-cog" href="#"><span>Manage User</span></a></li>
-									<li><a class="icon fa-retweet" href="/logout"><span>Logout</span></a></li>
-								</ul>
-							</nav>
-</div>
-			<!-- Features -->
-				<div >
-					<section id="features" class="container">
-						<header>
-							<h2>Welcome <strong><c:out value="${user.userId}"/></strong>!</h2>
-						</header>
-									<section>
-										<header>
-											<h3>Your Account Details</h3>
-										</header>
-						<ul >
-												<li class="icon fa-home">
-													<c:out value="${user.address}"/><br />
-													<c:out value="${user.city}"/><br />
-													USA
-												</li>
-												<li class="icon fa-phone">
-													<c:out value="${user.phoneNo}"/>
-												</li>
-												<li class="icon fa-envelope">
-													<c:out value="${user.email}"/>
-												</li>
-											</ul>
+		<div id="features-wrapper">
 
-									</section>
-						
-					</section>
-				</div>
-
-			
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a class="icon fa-home" href="/student"><span>Home</span></a></li>
+					<li><a href="/student/account" class="icon fa-cog"><span>My Account</span></a></li>
+					<li><a class="icon fa-retweet" href="/logout"><span>Logout</span></a></li>
+				</ul>
+			</nav>
 		</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+		<div>
 
-	</body>
+			<section id="features" class="container">
+				<header>
+					<h2>Request for Book</h2>
+				</header>
+				<table class="table">
+					<tr>
+						<th>Course Id</th>
+						<th>Course Name</th>
+					</tr>
+					<c:forEach var="studentBook" items="${studentBook}">
+						<tr>
+							<td>${studentBook.courseId}</td>
+							<td>${studentBook.courseName}</td>
+							<td>
+								<table class="table">
+									<tr>
+										<th>Book Name</th>
+										<th></th>
+									</tr>
+									<c:forEach var="book" items="${studentBook.books}">
+										<tr>
+											<td>${book.bookName}</td>
+											<td>
+												<form method="POST" action="/student/requestBook"
+													class="form-signin">
+													<input name=bookNumber type="hidden"
+														placeholder="bookNumber" value="${book.bookNumber}" />
+													<button class="btn btn-lg btn-primary btn-block"
+														type="submit">Request Book</button>
+												</form>
+											</td>
+										</tr>
+									</c:forEach>
+								</table>
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</section>
+			
+			<section id="features" class="container">
+				<header>
+					<h2>Your Book request</h2>
+				</header>
+				<table class="table">
+					<tr>
+						<th>Book Name</th>
+						<th>Allocation Date </th>
+						<th>Due Date </th>
+					</tr>
+					<c:forEach var="allocatedBook" items="${allocatedBook}">
+						<tr>
+							<td>${allocatedBook.bookName}</td>
+							<td>${allocatedBook.allocationDate}</td>	
+							<td>${allocatedBook.dueDate}</td>													
+						</tr>
+					</c:forEach>
+				</table>
+			</section>
+			
+			<section id="features" class="container">
+				<header>
+					<h2>Your Book request</h2>
+				</header>
+				<table class="table">
+					<tr>
+						<th>Book Name</th>
+						<th>Request Date </th>
+					</tr>
+					<c:forEach var="requestedBook" items="${requestedBook}">
+						<tr>
+							<td>${requestedBook.bookName}</td>
+							<td>${requestedBook.requestedDate}</td>						
+						</tr>
+					</c:forEach>
+				</table>
+			</section>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/skel-viewport.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
+
+</body>
 
 </html>

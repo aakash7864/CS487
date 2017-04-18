@@ -20,47 +20,49 @@
 			
 <div id="features-wrapper">
 
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li><a class="icon fa-home" href="/admin"><span>My Account</span></a></li>
-									<li>
-										<a href="#" class="icon fa-cog"><span>Manage Book</span></a>
-									</li>
-									<li><a class="icon fa-cog" href="#"><span>Manage User</span></a></li>
-									<li><a class="icon fa-retweet" href="/logout"><span>Logout</span></a></li>
-								</ul>
-							</nav>
+					<nav id="nav">
+				<ul>
+					<li><a class="icon fa-home" href="/teacher"><span>Home</span></a></li>
+					<li><a href="/teacher/account" class="icon fa-cog"><span>My Account</span></a></li>				
+					<li><a class="icon fa-retweet" href="/logout"><span>Logout</span></a></li>
+				</ul>
+			</nav>
 </div>
-			<!-- Features -->
-				<div >
-					<section id="features" class="container">
-						<header>
-							<h2>Welcome <strong><c:out value="${user.userId}"/></strong>!</h2>
-						</header>
-									<section>
-										<header>
-											<h3>Your Account Details</h3>
-										</header>
-						<ul >
-												<li class="icon fa-home">
-													<c:out value="${user.address}"/><br />
-													<c:out value="${user.city}"/><br />
-													USA
-												</li>
-												<li class="icon fa-phone">
-													<c:out value="${user.phoneNo}"/>
-												</li>
-												<li class="icon fa-envelope">
-													<c:out value="${user.email}"/>
-												</li>
-											</ul>
 
-									</section>
-						
-					</section>
-				</div>
 
+<div>
+
+			<section id="features" class="container">
+				<header>
+					<h2>Your Course Book request</h2>
+				</header>
+				<table class="table">
+					<tr>
+						<th>Book Name</th>
+						<th>Student Id</th>
+						<th>Request Date</th>
+					</tr>
+					<c:forEach var="requestedBook" items="${requestedBook}">
+						<tr>
+							<td>${requestedBook.bookName}</td>
+							<td>${requestedBook.studentId}</td>
+							<td>${requestedBook.requestedDate}</td>
+							<td>
+								<form method="POST" action="/teacher/checkoutBook"
+									class="form-signin">
+									<input name=bookNumber type="hidden" placeholder="bookNumber"
+										value="${requestedBook.bookId}" />
+										<input name=studentId type="hidden" placeholder="studentId"
+										value="${requestedBook.studentId}" />
+									<button class="btn btn-lg btn-primary btn-block" type="submit">Request
+										Book</button>
+								</form>
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</section>
+		</div>
 			
 		</div>
 

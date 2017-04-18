@@ -20,9 +20,11 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void addUser(User user) {
 		jdbcTemplate.update(
-				"INSERT INTO USER(userId, passowrd, role, email, phoneNo,address,city, created_date) VALUES (?,?,?,?,?,?,?,?)",
+				"INSERT INTO USER(userId, passowrd, role, email, phoneNo,address,city,created_date,firstName,lastName,country,studentId,profId,ParentName,parentsAddress,parentsContant,courseId ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
 				user.getUserId(), user.getPassowrd(), user.getRole(), user.getEmail(), user.getPhoneNo(),
-				user.getAddress(), user.getCity(), new Date());
+				user.getAddress(), user.getCity(), new Date(), user.getFirstName(), user.getLastName(),
+				user.getCountry(), user.getStudentId(), user.getProfId(), user.getParentsnName(), user.getParentsAdd(),
+				user.getParentsContant(), user.getCourseId());
 
 	}
 
@@ -44,6 +46,15 @@ public class UserDaoImpl implements UserDao {
 				user.setPhoneNo((String) (row.get("phoneNo")));
 				user.setAddress((String) (row.get("address")));
 				user.setCity((String) (row.get("city")));
+				user.setFirstName((String) (row.get("firstName")));
+				user.setLastName((String) (row.get("lastName")));
+				user.setCountry((String) (row.get("country")));
+				user.setStudentId((String) (row.get("studentId")));
+				user.setProfId((String) (row.get("profId")));
+				user.setParentsnName((String) (row.get("ParentName")));
+				user.setParentsAdd((String) (row.get("parentsAddress")));
+				user.setParentsContant((String) (row.get("parentsContant")));
+				user.setCourseId((String) (row.get("courseId")));
 				users.add(user);
 			}
 		}
@@ -68,6 +79,15 @@ public class UserDaoImpl implements UserDao {
 				user.setPhoneNo((String) (row.get("phoneNo")));
 				user.setAddress((String) (row.get("address")));
 				user.setCity((String) (row.get("city")));
+				user.setFirstName((String) (row.get("firstName")));
+				user.setLastName((String) (row.get("lastName")));
+				user.setCountry((String) (row.get("country")));
+				user.setStudentId((String) (row.get("studentId")));
+				user.setProfId((String) (row.get("profId")));
+				user.setParentsnName((String) (row.get("ParentName")));
+				user.setParentsAdd((String) (row.get("parentsAddress")));
+				user.setParentsContant((String) (row.get("parentsContant")));
+				user.setCourseId((String) (row.get("courseId")));
 				users.add(user);
 			}
 		}
