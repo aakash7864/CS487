@@ -38,6 +38,7 @@
 
     <form:form method="POST" modelAttribute="userForm"
 				class="form-signin" action="/admin/addUser">
+				<a href="/admin/users">Back</a>
 				<h2 class="form-signin-heading">Create your account</h2>
 
 				<spring:bind path="firstName">

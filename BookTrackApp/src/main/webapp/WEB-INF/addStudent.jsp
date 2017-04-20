@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Strongly Typed by HTML5 UP</title>
+<title>Add Student</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -38,8 +38,8 @@
 
 			<form:form method="POST" modelAttribute="userForm"
 				class="form-signin" action="/admin/addUser">
-				<h2 class="form-signin-heading">Create your account</h2>
-
+				<a href="/admin/users">Back</a>
+				<h2 class="form-signin-heading">Add Student</h2>
 				<spring:bind path="firstName">
 					<form:input type="text" path="firstName" class="form-control"
 						placeholder="First Name"></form:input>

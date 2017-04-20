@@ -7,13 +7,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Strongly Typed by HTML5 UP</title>
+<title>User Details</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="../assets/css/main.css" />
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
+<style type="text/css">
+    .itemWithPadding {
+      margin-top: 10px;
+    }
+    th {
+      text-align:left;
+      font-weight:bold;
+    }
+</style>
 <body class="homepage">
 	<div id="page-wrapper">
 
@@ -47,16 +56,16 @@
 				<form action="/admin/searchUser" method="post">
 				 <input name="bookName" type="text" class="form-control" placeholder="User Name..."
                    autofocus="true"/>
-					<button class="btn btn-lg btn-block" type="submit">Search</button>
+					<button class="btn btn-lg btn-block itemWithPadding" type="submit">Search</button>
 				</form>
 				</th>
 				<th>
 				<form action="/admin/addStudent" method="get">
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Add
+					<button class="btn btn-lg btn-primary btn-block itemWithPadding" style="margin-left:30px" type="submit">Add
 						Student </button>
 				</form>
 				<form action="/admin/addTeacher" method="get">
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Add
+					<button class="btn btn-lg btn-primary btn-block itemWithPadding" style="margin-left:30px" type="submit">Add
 						Teacher </button>
 				</form>
 				</th>
@@ -88,7 +97,7 @@
 									class="form-signin">
 									<input name=bookNumber type="hidden" placeholder="bookNumber"
 										value="${user.userId}" />
-									<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+									<button class="btn btn-lg btn-primary btn-block itemWithPadding" type="submit">Update</button>
 								</form>
 							</td>
 							<td>
@@ -96,7 +105,7 @@
 									class="form-signin">
 									<input name=bookNumber type="hidden" placeholder="bookNumber"
 										value="${user.userId}" />
-									<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
+									<button class="btn btn-lg btn-primary btn-block itemWithPadding" type="submit">Delete</button>
 								</form>
 							</td>
 						</tr>

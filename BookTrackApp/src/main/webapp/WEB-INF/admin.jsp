@@ -7,13 +7,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Strongly Typed by HTML5 UP</title>
+<title>Manage Books</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="assets/css/main.css" />
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
+<style type="text/css">
+    .itemWithPadding {
+      margin-top: 10px;
+    }
+    th {
+      text-align:left;
+       font-weight:bold;
+    }
+</style>
 <body class="homepage">
 	<div id="page-wrapper">
 
@@ -48,12 +57,12 @@
 				<form action="/admin/searchBook" method="post">
 				 <input name="bookName" type="text" class="form-control" placeholder="Book Name..."
                    autofocus="true"/>
-					<button class="btn btn-lg btn-block" type="submit">Search</button>
+					<button class="btn btn-lg btn-block itemWithPadding" type="submit">Search</button>
 				</form>
 				</th>
 				<th>
 				<form action="/admin/addBook" method="get">
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Add
+					<button class="btn btn-lg btn-primary btn-block" style="margin-left:10px" type="submit">Add
 						Book</button>
 				</form>
 				</th>
@@ -61,6 +70,7 @@
 				</table>
 				</div>
 				<table class="table">
+					<thead>
 					<tr>
 						<th>Book ID</th>
 						<th>Book Name</th>
@@ -69,6 +79,7 @@
 						<th></th>
 						<th></th>
 					</tr>
+					</thead>
 					<c:forEach var="book" items="${books}">
 						<tr>
 							<td>${book.bookNumber}</td>
@@ -80,7 +91,7 @@
 									class="form-signin">
 									<input name=bookNumber type="hidden" placeholder="bookNumber"
 										value="${book.bookNumber}" />
-									<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+									<button class="btn btn-lg btn-primary btn-block itemWithPadding" type="submit">Update</button>
 								</form>
 							</td>
 							<td>
@@ -88,7 +99,7 @@
 									class="form-signin">
 									<input name=bookNumber type="hidden" placeholder="bookNumber"
 										value="${book.bookNumber}" />
-									<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
+									<button class="btn btn-lg btn-primary btn-block itemWithPadding" type="submit">Delete</button>
 								</form>
 							</td>
 						</tr>
