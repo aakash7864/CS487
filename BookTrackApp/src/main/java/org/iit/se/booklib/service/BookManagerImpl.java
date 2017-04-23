@@ -1,6 +1,7 @@
 package org.iit.se.booklib.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -181,6 +182,13 @@ public class BookManagerImpl implements BookManager {
 					if (book != null) {
 						sudentBookRequest.setBookName(book.getBookName());
 						sudentBookRequest.setCourse(book.getCourseNumber());
+						int fine;
+						if ((new Date().toString()).compareTo(sudentBookRequest.getDueDate()) < 0) {
+							fine = 0;
+						} else {
+							fine = 10;
+						}
+						sudentBookRequest.setFine(fine);
 					}
 					requestedBook.add(sudentBookRequest);
 				}

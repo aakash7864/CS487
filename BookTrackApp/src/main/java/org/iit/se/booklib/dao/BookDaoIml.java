@@ -37,10 +37,10 @@ public class BookDaoIml implements BookDao {
 	@Override
 	public void checkoutStudentBook(String studentId, String bookId) {
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, 7);
+		cal.add(Calendar.DATE, 15);
 		jdbcTemplate.update(
-				"UPDATE USER_BOOK SET allocationDate = ?, returnDate= ?, requested = ? WHERE studentId = ? AND bookId = ?",
-				new Date().toString(), cal.getTime().toString(), false, studentId, bookId);
+				"UPDATE USER_BOOK SET allocationDate = ?, returnDate= ?, requested = ?, fine = ? WHERE studentId = ? AND bookId = ?",
+				new Date().toString(), cal.getTime().toString(), false, 0, studentId, bookId);
 	}
 
 	@Override

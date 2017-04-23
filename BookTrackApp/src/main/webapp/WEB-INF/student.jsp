@@ -15,6 +15,9 @@
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
 <style type="text/css">
+	.itemWithPadding {
+      margin-top: 10px;
+    }
     th {
       text-align:left;
       font-weight:bold;
@@ -63,7 +66,7 @@
 													class="form-signin">
 													<input name=bookNumber type="hidden"
 														placeholder="bookNumber" value="${book.bookNumber}" />
-													<button class="btn btn-lg btn-primary btn-block"
+													<button class="btn btn-lg btn-primary btn-block itemWithPadding"
 														type="submit">Request Book</button>
 												</form>
 											</td>
@@ -85,12 +88,14 @@
 						<th>Book Name</th>
 						<th>Allocation Date </th>
 						<th>Due Date </th>
+						<th>Fine </th>
 					</tr>
 					<c:forEach var="allocatedBook" items="${allocatedBook}">
 						<tr>
 							<td>${allocatedBook.bookName}</td>
 							<td>${allocatedBook.allocationDate}</td>	
-							<td>${allocatedBook.dueDate}</td>												
+							<td>${allocatedBook.dueDate}</td>
+							<td>${allocatedBook.fine}</td>												
 						</tr>
 					</c:forEach>
 				</table>

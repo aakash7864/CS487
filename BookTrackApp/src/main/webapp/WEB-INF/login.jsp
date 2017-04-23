@@ -29,8 +29,9 @@
 <body>
 
 <div class="container">
-
+	<h1 style="text-align:center"><b>HIGH SCHOOL BOOK TRACKING APPLICATION</b></h1>
     <form method="POST" action="/login" class="form-signin">
+    	
         <h2 class="form-heading">Log in</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
