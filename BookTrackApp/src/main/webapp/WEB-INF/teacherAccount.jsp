@@ -42,10 +42,10 @@
 						<h3>Your Account Details</h3>
 					</header>
 					<ul>
-						<li class="icon fa-home"><c:out value="${user.address}" /><br />
+						<li class="icon fa-home">Address - <c:out value="${user.address}" /><br />
 							<c:out value="${user.city}" /><br /> USA</li>
-						<li class="icon fa-phone"><c:out value="${user.phoneNo}" /></li>
-						<li class="icon fa-envelope"><c:out value="${user.email}" />
+						<li class="icon fa-phone">Contact Number - <c:out value="${user.phoneNo}" /></li>
+						<li class="icon fa-envelope">Email ID - <c:out value="${user.email}" />
 						</li>
 					</ul>
 

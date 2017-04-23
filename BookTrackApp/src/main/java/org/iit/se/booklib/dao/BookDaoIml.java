@@ -39,8 +39,8 @@ public class BookDaoIml implements BookDao {
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.DATE, 15);
 		jdbcTemplate.update(
-				"UPDATE USER_BOOK SET allocationDate = ?, returnDate= ?, requested = ?, fine = ? WHERE studentId = ? AND bookId = ?",
-				new Date().toString(), cal.getTime().toString(), false, 0, studentId, bookId);
+				"UPDATE USER_BOOK SET allocationDate = ?, returnDate= ?, requested = ? WHERE studentId = ? AND bookId = ?",
+				new Date().toString(), cal.getTime().toString(), false, studentId, bookId);
 	}
 
 	@Override
