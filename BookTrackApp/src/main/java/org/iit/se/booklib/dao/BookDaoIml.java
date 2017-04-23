@@ -206,6 +206,7 @@ public class BookDaoIml implements BookDao {
 				book.setBookAuthor((String) (row.get("book_author")));
 				book.setBookPrice(new BigDecimal((String) (row.get("book_price"))));
 				book.setBookPublication((String) (row.get("book_publication")));
+				book.setAvilableQuanity((int) (row.get("ava_quantity")));
 				books.add(book);
 			}
 		}

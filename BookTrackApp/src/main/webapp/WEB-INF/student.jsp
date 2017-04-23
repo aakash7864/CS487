@@ -74,7 +74,7 @@
 			
 			<section id="features" class="container">
 				<header>
-					<h2>Your Book request</h2>
+					<h2>Checked-out Books</h2>
 				</header>
 				<table class="table">
 					<tr>
@@ -94,7 +94,7 @@
 			
 			<section id="features" class="container">
 				<header>
-					<h2>Your Book request</h2>
+					<h2>Requested Books</h2>
 				</header>
 				<table class="table">
 					<tr>

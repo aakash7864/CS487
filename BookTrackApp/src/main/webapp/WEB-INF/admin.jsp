@@ -76,6 +76,7 @@
 						<th>Book Name</th>
 						<th>Author</th>
 						<th>Book Price</th>
+						<th>Available Quantity</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -86,6 +87,7 @@
 							<td>${book.bookName}</td>
 							<td>${book.bookAuthor}</td>
 							<td>${book.bookPrice}</td>
+							<td>${book.avilableQuanity}</td>
 							<td>
 								<form method="get" action="/admin/updateBook"
 									class="form-signin">
