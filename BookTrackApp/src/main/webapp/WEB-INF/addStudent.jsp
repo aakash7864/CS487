@@ -33,12 +33,13 @@
 			</nav>
 
 		</div>
-
+		<div style="margin:0px 50px">
+			<h2><a style="float:right" href="/admin/users">Back</a></h2>
+		</div>
 		<div class="container">
 
 			<form:form method="POST" modelAttribute="userForm"
 				class="form-signin" action="/admin/addUser">
-				<a href="/admin/users">Back</a>
 				<h2 class="form-signin-heading">Add Student</h2>
 				<spring:bind path="firstName">
 					<form:input type="text" path="firstName" class="form-control"

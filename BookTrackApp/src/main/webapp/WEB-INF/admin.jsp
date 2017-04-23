@@ -16,10 +16,10 @@
 </head>
 <style type="text/css">
     .itemWithPadding {
-      margin-top: 10px;
+       margin-top: 10px;
     }
     th {
-      text-align:left;
+       text-align:left;
        font-weight:bold;
     }
 </style>

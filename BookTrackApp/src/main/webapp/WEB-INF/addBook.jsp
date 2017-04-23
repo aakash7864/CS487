@@ -33,6 +33,9 @@
 			</nav>
 
 		</div>
+		<div style="margin:0px 50px">
+			<h2><a style="float:right" href="/admin">Back</a></h2>
+		</div>
 		<div class="container">
 			<form:form method="POST" modelAttribute="bookForm"
 				class="form-signin" action="/admin/addBook">

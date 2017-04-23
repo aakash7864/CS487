@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Strongly Typed by HTML5 UP</title>
+<title>Update Book</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -33,13 +33,17 @@
 			</nav>
 
 		</div>
+		<div style="margin:0px 50px">
+			<h2><a style="float:right" href="/admin">Back</a></h2>
+		</div>
 		<div class="container">
+
 			<form:form method="POST" modelAttribute="bookForm"
 				class="form-signin" action="/admin/updateBook">
-				<h2 class="form-signin-heading">Add Book</h2>
+				<h2 class="form-signin-heading">Update Book</h2>
 				<spring:bind path="bookNumber">
 					<div class="form-group ${status.error ? 'has-error' : ''}">
-						
+						Book Number
 						<form:input  path="bookNumber" class="form-control"
 							placeholder="Book Number"  readonly="true"></form:input>
 					</div>
@@ -47,7 +51,7 @@
 
 				<spring:bind path="bookName">
 					<div class="form-group ${status.error ? 'has-error' : ''}">
-					
+						Book Name
 						<form:input type="text" path="bookName" class="form-control"
 							placeholder="Book Name" autofocus="true"></form:input>
 					</div>
@@ -57,7 +61,7 @@
 
 				<spring:bind path="bookAuthor">
 					<div class="form-group ${status.error ? 'has-error' : ''}">
-					
+						Book Author
 						<form:input type="text" path="bookAuthor" class="form-control"
 							placeholder="Book Author"></form:input>
 					</div>
@@ -65,7 +69,7 @@
 
 				<spring:bind path="bookPrice">
 					<div class="form-group ${status.error ? 'has-error' : ''}">
-					
+						Book Price
 						<form:input type="text" path="bookPrice" class="form-control"
 							placeholder="Book Price"></form:input>
 					</div>
@@ -73,7 +77,7 @@
 
 				<spring:bind path="bookPublication">
 					<div class="form-group ${status.error ? 'has-error' : ''}">
-					
+						Book Publication
 						<form:input type="text" path="bookPublication"
 							class="form-control" placeholder="Book Publication" ></form:input>
 					</div>
