@@ -12,6 +12,7 @@ public class Book {
 	private int avilableQuanity;
 	private int allocatedQuantity;
 	private String courseNumber;
+	private String studRequested;
 
 	public String getBookNumber() {
 		return bookNumber;
@@ -75,6 +76,14 @@ public class Book {
 
 	public void setCourseNumber(String courseNumber) {
 		this.courseNumber = courseNumber;
+	}
+	
+	public String getRequested() {
+		return studRequested;
+	}
+	
+	public void setRequested(String studRequested) {
+		this.studRequested = studRequested;
 	}
 
 }

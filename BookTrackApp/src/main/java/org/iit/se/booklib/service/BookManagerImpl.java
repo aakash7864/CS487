@@ -123,7 +123,12 @@ public class BookManagerImpl implements BookManager {
 				if (map.containsKey(studCor)) {
 					Courses matched = map.get(studCor);
 					matched.setBooks(bookDao.getBookByCourseName(studCor));
-					courses.add(matched);
+					List<Book> books = bookDao.getBookByCourseName(studCor);
+					for (Book book : books) {
+						if(book.getRequested().equals("0")) {
+							courses.add(matched);
+						} 
+					}
 				}
 			}
 		}

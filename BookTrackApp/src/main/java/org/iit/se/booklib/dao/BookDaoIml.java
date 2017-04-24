@@ -23,15 +23,17 @@ public class BookDaoIml implements BookDao {
 	@Override
 	public void addBook(Book book) {
 		jdbcTemplate.update(
-				"INSERT INTO BOOK(book_number, book_name, book_author, book_price, book_publication, created_date) VALUES (?,?,?,?,?,?)",
+				"INSERT INTO BOOK(book_number, book_name, book_author, book_price, book_publication, created_date, requested) VALUES (?,?,?,?,?,?,?)",
 				book.getBookNumber(), book.getBookName(), book.getBookAuthor(), book.getBookPrice(),
-				book.getBookPublication(), new Date());
+				book.getBookPublication(), new Date(), false);
 	}
 
 	@Override
 	public void addUSerBook(String studentId, String bookid) {
 		jdbcTemplate.update("INSERT INTO USER_BOOK(studentId, bookId, requestedDate, requested) VALUES (?,?,?,?)",
 				studentId, bookid, new Date().toString(), true);
+		jdbcTemplate.update("UPDATE BOOK SET requested = ? WHERE book_number = ?",
+				true, bookid);
 	}
 
 	@Override
@@ -114,6 +116,7 @@ public class BookDaoIml implements BookDao {
 				book.setBookAuthor((String) (row.get("book_author")));
 				book.setBookPrice(new BigDecimal((String) row.get("book_price")));
 				book.setBookPublication((String) (row.get("book_publication")));
+				book.setRequested((String) (row.get("requested")));
 				books.add(book);
 			}
 		}
@@ -138,6 +141,7 @@ public class BookDaoIml implements BookDao {
 				book.setBookPrice(new BigDecimal((String) row.get("book_price")));
 				book.setBookPublication((String) (row.get("book_publication")));
 				book.setCourseNumber((String) (row.get("courseId")));
+				book.setRequested((String) (row.get("requested")));
 				books.add(book);
 			}
 		}
@@ -161,6 +165,7 @@ public class BookDaoIml implements BookDao {
 				book.setBookAuthor((String) (row.get("book_author")));
 				book.setBookPrice(new BigDecimal((String) row.get("book_price")));
 				book.setBookPublication((String) (row.get("book_publication")));
+				book.setRequested((String) (row.get("requested")));
 				books.add(book);
 			}
 		}
@@ -184,6 +189,7 @@ public class BookDaoIml implements BookDao {
 				book.setBookAuthor((String) (row.get("book_author")));
 				book.setBookPrice(new BigDecimal((String) row.get("book_price")));
 				book.setBookPublication((String) (row.get("book_publication")));
+				book.setRequested((String) (row.get("requested")));
 				books.add(book);
 			}
 		}
@@ -207,6 +213,7 @@ public class BookDaoIml implements BookDao {
 				book.setBookPrice(new BigDecimal((String) (row.get("book_price"))));
 				book.setBookPublication((String) (row.get("book_publication")));
 				book.setAvilableQuanity((int) (row.get("ava_quantity")));
+				book.setRequested((String) (row.get("requested")));
 				books.add(book);
 			}
 		}
