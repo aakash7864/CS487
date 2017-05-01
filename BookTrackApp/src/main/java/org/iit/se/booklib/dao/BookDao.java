@@ -31,4 +31,6 @@ public interface  BookDao {
 
 	void checkoutStudentBook(String studentId, String bookId);
 
+	void addBook(Book book, int avilableQty, int allocAquantity);
+
 }

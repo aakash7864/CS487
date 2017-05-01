@@ -29,6 +29,14 @@ public class BookDaoIml implements BookDao {
 	}
 
 	@Override
+	public void addBook(Book book,int avilableQty,int allocAquantity) {
+		jdbcTemplate.update(
+				"INSERT INTO BOOK(book_number, book_name, book_author, book_price, book_publication, created_date, requested, ava_quantity, alloc_quantity) VALUES (?,?,?,?,?,?,?,?,?)",
+				book.getBookNumber(), book.getBookName(), book.getBookAuthor(), book.getBookPrice(),
+				book.getBookPublication(), new Date(), false,avilableQty,allocAquantity);
+	}
+	
+	@Override
 	public void addUSerBook(String studentId, String bookid) {
 		jdbcTemplate.update("INSERT INTO USER_BOOK(studentId, bookId, requestedDate, requested) VALUES (?,?,?,?)",
 				studentId, bookid, new Date().toString(), true);

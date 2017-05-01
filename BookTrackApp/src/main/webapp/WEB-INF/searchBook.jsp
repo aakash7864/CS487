@@ -61,6 +61,7 @@
 						<th>Book Name</th>
 						<th>Author</th>
 						<th>Book Price</th>
+						<th>Book Publication</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -70,22 +71,7 @@
 							<td>${book.bookName}</td>
 							<td>${book.bookAuthor}</td>
 							<td>${book.bookPrice}</td>
-							<td>
-								<form method="POST" action="/admin/book/update"
-									class="form-signin">
-									<input name=bookNumber type="hidden" placeholder="bookNumber"
-										value="${book.bookNumber}" />
-									<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
-								</form>
-							</td>
-							<td>
-								<form method="POST" action="/admin/book/delete"
-									class="form-signin">
-									<input name=bookNumber type="hidden" placeholder="bookNumber"
-										value="${book.bookNumber}" />
-									<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
-								</form>
-							</td>
+							<td>${book.bookPublication}</td>
 						</tr>
 					</c:forEach>
 				</table>

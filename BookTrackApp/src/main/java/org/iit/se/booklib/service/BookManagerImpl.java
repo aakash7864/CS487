@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
 @Service
@@ -33,6 +32,9 @@ public class BookManagerImpl implements BookManager {
 
 	@Autowired
 	UserManager userManager;
+
+	@Autowired
+	GoogleBookReader googleBookReader;
 
 	private Map<String, List<Book>> userToBookMapping = new HashMap<String, List<Book>>();
 
@@ -52,9 +54,10 @@ public class BookManagerImpl implements BookManager {
 
 	@Override
 	public List<Book> getBookByName(String bookName) {
-		List<Book> bookList = ImmutableList.of();
+		List<Book> bookList = new ArrayList<>();
 		if (StringUtils.isNotEmpty(bookName)) {
-			bookList = ImmutableList.copyOf(bookDao.getBookByName(bookName));
+			bookList.addAll(bookDao.getBookByName(bookName));
+			bookList.addAll(googleBookReader.getBooksFromGoogleAPI(bookName));
 		}
 		return bookList;
 	}
@@ -125,9 +128,9 @@ public class BookManagerImpl implements BookManager {
 					matched.setBooks(bookDao.getBookByCourseName(studCor));
 					List<Book> books = bookDao.getBookByCourseName(studCor);
 					for (Book book : books) {
-						if(book.getRequested().equals("0")) {
+						if (book.getRequested().equals("0")) {
 							courses.add(matched);
-						} 
+						}
 					}
 				}
 			}
@@ -164,7 +167,8 @@ public class BookManagerImpl implements BookManager {
 			for (SudentBookRequest sudentBookRequest : books) {
 				if (sudentBookRequest.isRequested().equals("1")) {
 					Book book = bookDao.getBookById(sudentBookRequest.getBookId());
-					if (book != null && book.getCourseNumber()!=null && teacher.getCourseId().contains(book.getCourseNumber())) {
+					if (book != null && book.getCourseNumber() != null
+							&& teacher.getCourseId().contains(book.getCourseNumber())) {
 						sudentBookRequest.setBookName(book.getBookName());
 						sudentBookRequest.setCourse(book.getCourseNumber());
 					}
@@ -206,7 +210,7 @@ public class BookManagerImpl implements BookManager {
 	public void requestBook(String userid, String bookId) {
 		bookDao.addUSerBook(userid, bookId);
 	}
-	
+
 	@Override
 	public void checkoutBook(String userid, String bookId) {
 		bookDao.checkoutStudentBook(userid, bookId);
