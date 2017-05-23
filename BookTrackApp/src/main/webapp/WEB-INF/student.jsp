@@ -7,13 +7,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Strongly Typed by HTML5 UP</title>
+<title>Student</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="assets/css/main.css" />
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
+<style type="text/css">
+    th {
+      text-align:left;
+      font-weight:bold;
+    }
+</style>
 <body class="homepage">
 	<div id="page-wrapper">
 
@@ -40,6 +46,8 @@
 					<tr>
 						<th>Course Id</th>
 						<th>Course Name</th>
+						<th>Book Name</th>
+						<th></th>
 					</tr>
 					<c:forEach var="studentBook" items="${studentBook}">
 						<tr>
@@ -47,10 +55,6 @@
 							<td>${studentBook.courseName}</td>
 							<td>
 								<table class="table">
-									<tr>
-										<th>Book Name</th>
-										<th></th>
-									</tr>
 									<c:forEach var="book" items="${studentBook.books}">
 										<tr>
 											<td>${book.bookName}</td>
@@ -86,7 +90,7 @@
 						<tr>
 							<td>${allocatedBook.bookName}</td>
 							<td>${allocatedBook.allocationDate}</td>	
-							<td>${allocatedBook.dueDate}</td>													
+							<td>${allocatedBook.dueDate}</td>												
 						</tr>
 					</c:forEach>
 				</table>
@@ -94,7 +98,7 @@
 			
 			<section id="features" class="container">
 				<header>
-					<h2>Requested Books</h2>
+					<h2>Pending Requests</h2>
 				</header>
 				<table class="table">
 					<tr>

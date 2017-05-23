@@ -54,8 +54,7 @@
 										value="${requestedBook.bookId}" />
 										<input name=studentId type="hidden" placeholder="studentId"
 										value="${requestedBook.studentId}" />
-									<button class="btn btn-lg btn-primary btn-block" type="submit">Request
-										Book</button>
+									<button class="btn btn-lg btn-primary btn-block" type="submit">Checkout</button>
 								</form>
 							</td>
 						</tr>

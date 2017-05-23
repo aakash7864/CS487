@@ -10,6 +10,7 @@ public class SudentBookRequest {
 	String dueDate;
 	String bookName;
 	String course;
+	int fine;
 	public String getBookName() {
 		return bookName;
 	}
@@ -58,7 +59,12 @@ public class SudentBookRequest {
 	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
-	
+	public int getFine() {
+		return fine;
+	}
+	public void setFine(int fine) {
+		this.fine = fine;
+	}
 	
 	
 }
